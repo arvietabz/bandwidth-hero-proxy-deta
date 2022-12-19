@@ -15,6 +15,10 @@ and user's IP address through to the origin host.
 
 ## Deployment
 
+### Deta 
+
+[![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy)
+
 ### Heroku
 
 You can deploy this service to Heroku:
