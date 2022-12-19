@@ -1,11 +1,28 @@
-const express = require('express');
+#!/usr/bin/env node
 
-const app = express(); 
+'use strict'
 
-app.get('/', async (req, res) => {
+const express = require('express')
 
-  res.send('Hello World')
+const app = express()
 
-});
+const authenticate = require('./src/authenticate')
 
-module.exports = app;
+const params = require('./src/params')
+
+const proxy = require('./src/proxy')
+
+const PORT = process.env.PORT || 8080
+
+app.enable('trust proxy')
+
+app.get('/', authenticate, params, proxy)
+
+app.get('/favicon.ico', (req, res) => res.status(204).end())
+
+app.listen(PORT, () => console.log(`Listening on ${PORT}`))
+
+module.exports = app
+
+
+
